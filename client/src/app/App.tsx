@@ -1,9 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import { Login, Dashboard, useLocalStorage } from '../components';
 
 function App() {
-  return <div></div>;
+  const [id, setID] = useLocalStorage('id', undefined);
+
+  return (
+    <Fragment>
+      {id ? <Dashboard id={id} /> : <Login onIdSubmit={setID} />}
+    </Fragment>
+  );
 }
 
 export default App;
