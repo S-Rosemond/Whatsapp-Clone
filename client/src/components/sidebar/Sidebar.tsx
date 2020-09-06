@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { Tab, Nav } from 'react-bootstrap';
-import { NavElements, Contacts, Conversations } from '..';
+import { Tab, Nav, Button, Modal } from 'react-bootstrap';
+import {
+  NavElements,
+  Contacts,
+  Conversations,
+  ConversationModal,
+  ContactsModal,
+} from '..';
+import DisplayID from './DisplayID';
 
 interface SidebarProps {
   id: string;
@@ -16,7 +23,14 @@ const CONTACTS_KEY = 'Contacts';
 export default function (props: SidebarProps) {
   const { id } = props;
 
+  const [modalOpen, setModalOpen] = useState(false);
+
   const [activeKey, setActiveKey] = useState<string | null>(CONVERSATIONS_KEY);
+  const conversationsOpen = activeKey === CONVERSATIONS_KEY;
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div style={styles} className='d-flex flex-column'>
@@ -25,7 +39,7 @@ export default function (props: SidebarProps) {
           <NavElements array={[CONVERSATIONS_KEY, CONTACTS_KEY]} {...props} />
         </Nav>
 
-        <Tab.Content>
+        <Tab.Content className='border-right overflow-auto flex-grow-1'>
           <Tab.Pane eventKey={CONVERSATIONS_KEY}>
             <Conversations />
           </Tab.Pane>
@@ -33,7 +47,18 @@ export default function (props: SidebarProps) {
             <Contacts />
           </Tab.Pane>
         </Tab.Content>
+        <DisplayID id={id} />
+        <Button className='rounded-0 ' onClick={setModalOpen.bind(null, true)}>
+          New {conversationsOpen ? CONVERSATIONS_KEY : CONTACTS_KEY}
+        </Button>
       </Tab.Container>
+      <Modal show={modalOpen} onHide={closeModal}>
+        {conversationsOpen ? (
+          <ConversationModal closeModal={closeModal} />
+        ) : (
+          <ContactsModal closeModal={closeModal} />
+        )}
+      </Modal>
     </div>
   );
 }

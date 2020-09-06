@@ -5,3 +5,6 @@ export { default as Sidebar } from './sidebar/Sidebar';
 export { default as NavElements } from './sidebar/SidebarElements';
 export { default as Conversations } from './sidebar/Conversations';
 export { default as Contacts } from './sidebar/Contacts';
+export { default as DisplayID } from './sidebar/DisplayID';
+export { default as ConversationModal } from './sidebar/NewConversationModal';
+export { default as ContactsModal } from './sidebar/NewContactsModal';

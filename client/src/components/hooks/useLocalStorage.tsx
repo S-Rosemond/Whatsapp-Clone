@@ -8,6 +8,9 @@ export default function (key: string, initialValue: unknown) {
   const [value, setValue] = useState(() => {
     const jsonValue = localStorage.getItem(prefixedKey);
 
+    if (jsonValue === 'undefined' && typeof jsonValue === 'string')
+      return initialValue;
+
     if (jsonValue !== null && jsonValue !== undefined)
       return JSON.parse(jsonValue);
 
