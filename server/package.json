@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "compile": "tsc server.ts",
     "devStart": "nodemon server.js"
   },
   "keywords": [],

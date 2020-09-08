@@ -8,3 +8,4 @@ export { default as Contacts } from './sidebar/Contacts';
 export { default as DisplayID } from './sidebar/DisplayID';
 export { default as ConversationModal } from './sidebar/NewConversationModal';
 export { default as ContactsModal } from './sidebar/NewContactsModal';
+export { default as OpenConversation } from './body/OpenConversation';

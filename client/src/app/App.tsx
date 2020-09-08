@@ -8,7 +8,7 @@ function App() {
 
   var dashboard = (
     <ContactsProvider>
-      <ConversationsProvider>
+      <ConversationsProvider id={id}>
         <Dashboard id={id} />
       </ConversationsProvider>
     </ContactsProvider>
