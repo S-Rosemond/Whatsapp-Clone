@@ -28,7 +28,9 @@ export default function () {
               ref={lastMessageRef}
               key={index}
               className={`my-1 d-flex flex-column ${
-                message.fromMe ? 'align-self-end' : null
+                message.fromMe
+                  ? 'align-self-end align-items-end'
+                  : 'align-items-start'
               }`}
             >
               <div

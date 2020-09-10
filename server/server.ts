@@ -1,2 +1,0 @@
-// fix script devStart
-'test';
